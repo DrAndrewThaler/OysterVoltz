@@ -53,8 +53,8 @@ void setup(void) {
 
   if (dataFile) {
     Serial.println("====================================================");
-    Serial.println("Date,Time,Bus Voltage,Shunt Voltage,Load Voltage,Current(mA),Power(mW)");
-    dataFile.println("Date,Time,Bus Voltage,Shunt Voltage,Load Voltage,Current(mA),Power(mW)");
+    Serial.println("Date,Time,Bus Voltage,Shunt Voltage(V),Load Voltage,Current(mA),Power(mW)");
+    dataFile.println("Date,Time,Bus Voltage,Shunt Voltage(V),Load Voltage,Current(mA),Power(mW)");
     dataFile.close();
 
   } else {
@@ -105,13 +105,13 @@ void loop(void) {
   loadvoltage = busvoltage + (shuntvoltage / 1000);
   
   Serial.print("Bus Voltage:   "); Serial.print(busvoltage); Serial.println(" V");
-  Serial.print("Shunt Voltage: "); Serial.print(shuntvoltage); Serial.println(" mV");
+  Serial.print("Shunt Voltage: "); Serial.print(shuntvoltage); Serial.println(" V");
   Serial.print("Load Voltage:  "); Serial.print(loadvoltage); Serial.println(" V");
   Serial.print("Current:       "); Serial.print(current_mA); Serial.println(" mA");
   Serial.print("Power:         "); Serial.print(power_mW); Serial.println(" mW");
   Serial.println("");
 
-  delay(2000);
+  delay(1800000); // Time delay for each data entry onto the SD card
 
 //output readings to data file.
   File dataFile = SD.open(datalogFileName, FILE_WRITE);
