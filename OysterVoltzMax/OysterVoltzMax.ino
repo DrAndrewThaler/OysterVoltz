@@ -104,6 +104,7 @@ void loop(void) {
   power_mW = ina219.getPower_mW();
   loadvoltage = busvoltage + (shuntvoltage / 1000);
   
+  Serial.print("DateTime:      "); Serial.println(dateTimeString);
   Serial.print("Bus Voltage:   "); Serial.print(busvoltage); Serial.println(" V");
   Serial.print("Shunt Voltage: "); Serial.print(shuntvoltage); Serial.println(" V");
   Serial.print("Load Voltage:  "); Serial.print(loadvoltage); Serial.println(" V");
@@ -111,7 +112,7 @@ void loop(void) {
   Serial.print("Power:         "); Serial.print(power_mW); Serial.println(" mW");
   Serial.println("");
 
-  delay(1800000); // Time delay for each data entry onto the SD card
+  delay(1800000); // 1800000 = 30 min time delay for each data entry onto the SD card
 
 //output readings to data file.
   File dataFile = SD.open(datalogFileName, FILE_WRITE);
